@@ -1,4 +1,6 @@
-﻿namespace tabuleiro
+﻿using tabuleiro;
+
+namespace tabuleiro
 {
     internal class Tabuleiro
     {
@@ -23,7 +25,17 @@
             return pecas[pos.linha, pos.coluna];
         }
 
+        public bool existePeca(Posicao pos)
+        {
+            validarPosicao(pos);
+            return peca(pos) != null;
+        }
+
         public void colocarPeca(Peca p, Posicao pos) {
+            if(existePeca(pos))
+            {
+                throw new TabuleiroException("Já existe uma peça nessa posição!");
+            }
             pecas[pos.coluna, pos.linha] = p;
             p.posicao = pos;
         }
