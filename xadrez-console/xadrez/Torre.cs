@@ -9,10 +9,15 @@ namespace xadrez
         {
         }
 
+        public override string ToString()
+        {
+            return "T";
+        }
+
         private bool podeMover(Posicao pos)
         {
             Peca p = tab.peca(pos);
-            return p == null || p.cor != this.cor;
+            return p == null || p.cor != cor;
         }
 
         public override bool[,] movimentosPossiveis()
@@ -26,19 +31,19 @@ namespace xadrez
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && tab.peca(pos).cor != this.cor)
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
                     break;
                 }
                 pos.linha = pos.linha - 1;
             }
 
-            // acima
+            // abaixo
             pos.definirValores(posicao.linha + 1, posicao.coluna);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && tab.peca(pos).cor != this.cor)
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
                     break;
                 }
@@ -50,7 +55,7 @@ namespace xadrez
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && tab.peca(pos).cor != this.cor)
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
                     break;
                 }
@@ -62,7 +67,7 @@ namespace xadrez
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && tab.peca(pos).cor != this.cor)
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
                     break;
                 }
@@ -70,11 +75,6 @@ namespace xadrez
             }
 
             return mat;
-        }
-
-        public override string ToString()
-        {
-            return "T";
         }
     }
 }

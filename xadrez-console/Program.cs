@@ -15,6 +15,7 @@ namespace xadrez_console
 
                 while (!partida.terminada)
                 {
+
                     try
                     {
                         Console.Clear();
@@ -30,9 +31,10 @@ namespace xadrez_console
                         Console.Clear();
                         Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
 
+                        Console.WriteLine();
                         Console.Write("Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
-                        partida.validarPosicaoDeOrigem(origem, destino);
+                        partida.validarPosicaoDeDestino(origem, destino);
 
                         partida.realizaJogada(origem, destino);
                     }
@@ -42,10 +44,8 @@ namespace xadrez_console
                         Console.ReadLine();
                     }
                 }
-
                 Console.Clear();
                 Tela.imprimirPartida(partida);
-
             }
             catch (TabuleiroException e)
             {

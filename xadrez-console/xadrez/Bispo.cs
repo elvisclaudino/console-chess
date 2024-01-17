@@ -2,8 +2,10 @@
 
 namespace xadrez
 {
-    internal class Bispo : Peca
+
+    class Bispo : Peca
     {
+
         public Bispo(Tabuleiro tab, Cor cor) : base(tab, cor)
         {
         }
@@ -25,48 +27,48 @@ namespace xadrez
 
             Posicao pos = new Posicao(0, 0);
 
-            // no
-            pos.definirValores(posicao.linha - 1, posicao.coluna);
+            // NO
+            pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && tab.peca(pos).cor != this.cor)
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
                     break;
                 }
                 pos.definirValores(pos.linha - 1, pos.coluna - 1);
             }
 
-            // ne
+            // NE
             pos.definirValores(posicao.linha - 1, posicao.coluna + 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && tab.peca(pos).cor != this.cor)
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
                     break;
                 }
                 pos.definirValores(pos.linha - 1, pos.coluna + 1);
             }
 
-            // se
+            // SE
             pos.definirValores(posicao.linha + 1, posicao.coluna + 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && tab.peca(pos).cor != this.cor)
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
                     break;
                 }
                 pos.definirValores(pos.linha + 1, pos.coluna + 1);
             }
 
-            // so
+            // SO
             pos.definirValores(posicao.linha + 1, posicao.coluna - 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && tab.peca(pos).cor != this.cor)
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
                     break;
                 }
